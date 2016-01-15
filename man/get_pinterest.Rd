@@ -1,10 +1,10 @@
 \name{get_pinterest}
 \alias{get_pinterest}
 \title{
-Takes a URL and retrieves the number of pins on Pinterest
+Retrieves the number of pins on Pinterest
 }
 \description{
-Takes a URL and returns a data frame with the original URL and the number of pins on Pinterest. The function accepts the optional variable sleep.time (default=0) to avoid hitting API limits (if implemented). Use sleep.time to define the number of seconds the function will wait before proceeding to the next URL. If the URLs are shortened, you will have to first resolve them using the function get_url.
+Takes a URL and returns a data frame with the original URL and the number of pins on Pinterest. The function accepts the optional variable sleep.time (default=0) to avoid hitting API limits (if implemented). Use sleep.time to define the number of seconds the function will wait before proceeding to the next URL. If the URLs are shortened, you will have to first resolve them using the function get_url().
 }
 \usage{
 get_pinterest(links, sleep.time = 0)

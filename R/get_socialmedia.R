@@ -18,32 +18,29 @@ function(links, sleep.time=0) {
         if(.Platform$OS.type == "windows") { if(!file.exists("cacert.perm")) download.file(url="http://curl.haxx.se/ca/cacert.pem", destfile="cacert.perm") }
         
         # function for looping thru URLs
-        if(.Platform$OS.type == "windows") { api_scrapper <- function(x) try(getURL(x, cainfo = "cacert.perm", timeout = 240, ssl.verifypeer = FALSE)) } else { 
-            api_scrapper <- function(x) try(getURL(x, timeout = 240, ssl.verifypeer = FALSE)) }        
+        if(.Platform$OS.type == "windows") { api_scrapper <- function(x) try(RCurl::getURL(x, cainfo = "cacert.perm", timeout = 240, ssl.verifypeer = FALSE)) } else { 
+            api_scrapper <- function(x) try(RCurl::getURL(x, timeout = 240, ssl.verifypeer = FALSE)) }        
         
         # create call URLs
         fbk.call <- paste0("https://api.facebook.com/method/links.getStats?urls=",link.now,"&format=json")
-        twt.call <- paste0("http://urls.api.twitter.com/1/urls/count.json?url=",link.now)
         rdd.call <- paste0("http://buttons.reddit.com/button_info.json?url=",link.now)
-        lkn.call <- paste0("http://www.linkedin.com/countserv/count/share?url=",link.now,"&format=json")
+        lkn.call <- paste0("https://www.linkedin.com/countserv/count/share?url=",link.now,"&format=json")
         stu.call <- paste0("http://www.stumbleupon.com/services/1.01/badge.getinfo?url=",link.now)
         pin.call <- paste0("http://api.pinterest.com/v1/urls/count.json?callback=receiveCount&url=",link.now,"&format=json")
         
         # prepare for response
         fbk.response <- data.frame()
-        twt.response <- data.frame()
         rdd.response <- data.frame()
         lkn.response <- data.frame()
         stu.response <- data.frame()
         pin.response <- data.frame()
         
         # collect responses
-        fbk.response <- try(data.frame(fromJSON(api_scrapper(fbk.call))))
-        twt.response <- try(data.frame(fromJSON(api_scrapper(twt.call))))
-        rdd.response <- try(fromJSON(api_scrapper(rdd.call))$data$children$data)
-        lkn.response <- try(data.frame(fromJSON(api_scrapper(lkn.call))))
-        stu.response <- try(data.frame(fromJSON(api_scrapper(stu.call))))
-        pin.response <- try(data.frame(fromJSON(gsub("receiveCount\\(|\\)", "", api_scrapper(pin.call)))))
+        fbk.response <- try(data.frame(jsonlite::fromJSON(api_scrapper(fbk.call))))
+        rdd.response <- try(jsonlite::fromJSON(api_scrapper(rdd.call))$data$children$data)
+        lkn.response <- try(data.frame(jsonlite::fromJSON(api_scrapper(lkn.call))))
+        stu.response <- try(data.frame(jsonlite::fromJSON(api_scrapper(stu.call))))
+        pin.response <- try(data.frame(jsonlite::fromJSON(gsub("receiveCount\\(|\\)", "", api_scrapper(pin.call)))))
         
         # prepare data frame for aggregation
         response <- data.frame(
@@ -54,7 +51,6 @@ function(links, sleep.time=0) {
             fbk_comments=NA,
             fbk_total=NA,
             fbk_clicks=NA,
-            twt_tweets=NA,
             rdt_score=NA,
             rdt_downs=NA,
             rdt_ups=NA,
@@ -78,7 +74,6 @@ function(links, sleep.time=0) {
         if(is.data.frame(fbk.response)) { if(length(fbk.response$comment_count)>0) { try(response$fbk_comments<-as.numeric(as.character(fbk.response$comment_count))) } }
         if(is.data.frame(fbk.response)) { if(length(fbk.response$total_count)>0) { try(response$fbk_total<-as.numeric(as.character(fbk.response$total_count))) } }
         if(is.data.frame(fbk.response)) { if(length(fbk.response$click_count)>0) { try(response$fbk_clicks<-as.numeric(as.character(fbk.response$click_count))) } }
-        if(is.data.frame(twt.response)) { if(length(twt.response$count)>0) { try(response$twt_tweets<-as.numeric(as.character(twt.response$count))) } }
         if(is.data.frame(rdd.response)) { if(length(rdd.response$score)>0) { try(response$rdt_score<-rdd.response$score) } }
         if(is.data.frame(rdd.response)) { if(length(rdd.response$downs)>0) { try(response$rdt_downs<-rdd.response$downs) } }
         if(is.data.frame(rdd.response)) { if(length(rdd.response$ups)>0) { try(response$rdt_ups<-rdd.response$ups) } }
