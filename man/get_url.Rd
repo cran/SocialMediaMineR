@@ -27,7 +27,7 @@ If return.df=TRUE the function returns a data frame with two columns: the origin
 The function relies on Hadley Wickham's httr package. Hadley was also very helpful in optimizing the code.
 }
 \author{
-Marco Toledo Bastos
+Marco T. Bastos
 }
 \examples{
 get_url("http://t.co/iWmeUiECAa")

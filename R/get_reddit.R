@@ -1,7 +1,7 @@
 get_reddit <-
 function(links, sleep.time=0) {
     rdd.call <- paste0("http://buttons.reddit.com/button_info.json?url=",links)
-    if(.Platform$OS.type == "windows") { if(!file.exists("cacert.perm")) download.file(url="http://curl.haxx.se/ca/cacert.pem", destfile="cacert.perm") }
+    if(.Platform$OS.type == "windows") { if(!file.exists("cacert.perm")) download.file(url="https://curl.haxx.se/ca/cacert.pem", destfile="cacert.perm") }
     if(.Platform$OS.type == "windows") { api_scrapper <- function(x) try(RCurl::getURL(x, cainfo = "cacert.perm", timeout = 240, ssl.verifypeer = FALSE)) } else { 
         api_scrapper <- function(x) try(RCurl::getURL(x, timeout = 240, ssl.verifypeer = FALSE)) }
     Sys.sleep(sleep.time)

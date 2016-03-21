@@ -3,3 +3,5 @@
 2015-12-29 - version 0.2:
    - Bug fixes
    - Removed get_twitter function from package as a result of Twitter's decision of discontinuing the Tweet share count API endpoint in November 2015. This is the endpoint paid services relied upon for their API calls and it was also the endpoint used in SocialMediaMineR. Tweet count was also dropped from the get_socialmedia function.
+2016-03-20 - version 0.3:
+   - cacert.pem now downloads (if needed) using HTTPS to comply with 'R CMD check' on Windows 

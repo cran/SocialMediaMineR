@@ -24,7 +24,7 @@ Returns the original URL and the number of shares on LinkedIn.
 Information about the LinkedIn API is available at https://developer.linkedin.com/apis
 }
 \author{
-Marco Toledo Bastos
+Marco T. Bastos
 }
 \examples{
 get_linkedin("http://www.nytimes.com/")

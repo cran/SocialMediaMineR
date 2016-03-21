@@ -25,7 +25,7 @@ Returns the original URL, normalized URL, number of Facebook shares, likes, comm
 Information about the Facebook API is available at https://developers.facebook.com/ 
 }
 \author{
-Marco Toledo Bastos
+Marco T. Bastos
 }
 \examples{
 get_facebook("http://www.google.com/")

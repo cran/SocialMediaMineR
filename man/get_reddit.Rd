@@ -24,7 +24,7 @@ It returns a data frame with forty columns associated the performance of the URL
 The Reddit API documentation is available at http://www.reddit.com/dev/api
 }
 \author{
-Marco Toledo Bastos
+Marco T. Bastos
 }
 \examples{
 get_reddit("http://i.imgur.com/rSnA8.png")

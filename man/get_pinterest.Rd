@@ -24,7 +24,7 @@ Returns the original URL and the number of pins on Pinterest.
 Pinterest is yet to release its official public API. More informatio at https://developers.pinterest.com/
 }
 \author{
-Marco Toledo Bastos
+Marco T. Bastos
 }
 \examples{
 get_pinterest("http://www.nytimes.com/")
