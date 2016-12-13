@@ -40,7 +40,7 @@ Returns a data frame with the number of shares, likes, pins, and hits on Faceboo
 
 }
 \author{
-Marco T. Bastos
+Marco Bastos
 }
 \examples{
 get_socialmedia("http://cran.r-project.org/")

@@ -11,8 +11,8 @@ Search and analytic tool that takes one or multiple URL(s) and returns the infor
 \tabular{ll}{
 Package: \tab SocialMediaMineR\cr
 Type: \tab Package\cr
-Version: \tab 0.3\cr
-Date: \tab 2016-03-20\cr
+Version: \tab 0.4\cr
+Date: \tab 2016-12-13\cr
 License: \tab GPL (>= 2)\cr
 }
 The function get_socialmedia() returns a data frame with the number of shares, likes, pins, and hits on Facebook, Pinterest, StumbleUpon, LinkedIn, and Reddit. The resulting data frame includes the following 15 columns:
@@ -35,9 +35,9 @@ pin_counts number of pins on Pinterest
 The package also includes dedicated functions to each social network platform. The function get_facebook() performs a search on Facebook, get_linkedin on LinkedIn, get_pinterest() on Pinterest, get_reddit() on Reddit, and get_stumbleupon() on StumbleUpon. The function get_url() resolves shortened URLs and can be used with the aforementioned functions.
 }
 \author{
-Marco T. Bastos
+Marco Bastos
 
-Maintainer: Marco T. Bastos <marco@toledobastos.com>
+Maintainer: Marco Bastos <marco@toledobastos.com>
 }
 \keyword{ IO }
 \examples{

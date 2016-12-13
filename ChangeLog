@@ -5,3 +5,7 @@
    - Removed get_twitter function from package as a result of Twitter's decision of discontinuing the Tweet share count API endpoint in November 2015. This is the endpoint paid services relied upon for their API calls and it was also the endpoint used in SocialMediaMineR. Tweet count was also dropped from the get_socialmedia function.
 2016-03-20 - version 0.3:
    - cacert.pem now downloads (if needed) using HTTPS to comply with 'R CMD check' on Windows 
+2016-12-13 - version 0.4:
+	- Updated get_facebook to make a call via Graph API instead of Facebook REST API version 2.2, which has been phased out. As a result, get_facebook no longer returns number of clicks and likes, with corresponding requests using get_socialmedia also returning only Facebook shares and comments.
+	- Fixed NAs on get_reddit
+	

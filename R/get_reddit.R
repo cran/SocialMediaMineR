@@ -47,5 +47,6 @@ function(links, sleep.time=0) {
         visited = temp$data$children$data$visited,
         num_reports = temp$data$children$data$num_reports,
         ups = temp$data$children$data$ups)
+    rdd.response[is.na(rdd.response)] <- 0
     return(rdd.response)
 }

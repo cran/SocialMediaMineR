@@ -21,10 +21,10 @@ Number of seconds the function will wait before proceeding to the next URL (opti
 Returns the original URL and the number of shares on LinkedIn.
 }
 \references{
-Information about the LinkedIn API is available at https://developer.linkedin.com/apis
+Information about the LinkedIn API is available at <https://developer.linkedin.com/apis>
 }
 \author{
-Marco T. Bastos
+Marco Bastos
 }
 \examples{
 get_linkedin("http://www.nytimes.com/")

@@ -24,7 +24,7 @@ Returns a data frame with the view count of URLs on StumbleUpon. The resulting d
 StumbleUpon has an API for the short URL functionality offered by Su.pr. More information at http://www.stumbleupon.com/help/business-tools/supr/supr-api/
 }
 \author{
-Marco T. Bastos
+Marco Bastos
 }
 \examples{
 get_stumbleupon("http://www.cnn.com")

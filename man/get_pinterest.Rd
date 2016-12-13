@@ -21,10 +21,10 @@ Number of seconds the function will wait before proceeding to the next URL
 Returns the original URL and the number of pins on Pinterest.
 }
 \references{
-Pinterest is yet to release its official public API. More informatio at https://developers.pinterest.com/
+Pinterest is yet to release its official public API. More informatio at <https://developers.pinterest.com/>
 }
 \author{
-Marco T. Bastos
+Marco Bastos
 }
 \examples{
 get_pinterest("http://www.nytimes.com/")

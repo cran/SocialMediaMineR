@@ -1,14 +1,14 @@
 Package: SocialMediaMineR
 Type: Package
 Title: A Social Media Search and Analytic Tool
-Version: 0.3
-Date: 2016-03-20
-Author: Marco T. Bastos
-Maintainer: Marco T. Bastos <marco@toledobastos.com>
+Version: 0.4
+Date: 2016-12-13
+Author: Marco Bastos
+Maintainer: Marco Bastos <marco@toledobastos.com>
 Imports: RCurl, jsonlite, httr, utils
-Description: Social media search and analytic tool that takes one or multiple URL(s) and returns the information about the popularity and reach of the URL(s) on social media. The function get_socialmedia() retrieves the number of shares, likes, pins, and hits on Facebook (www.facebook.com), Pinterest (www.pinterest.com), StumbleUpon (www.stumbleupon.com), LinkedIn (www.linkedin.com), and Reddit (www.reddit.com). The package also includes dedicated functions for each social network platform and a function to resolve shortened URLs.
+Description: Social media search and analytic tool that takes one or multiple URL(s) and returns the information about the popularity and reach of the URL(s) on social media. The function get_socialmedia() retrieves the number of shares, likes, pins, and hits on Facebook (<http://www.facebook.com>), Pinterest (<http://www.pinterest.com>), StumbleUpon (<http://www.stumbleupon.com>), LinkedIn (<http://www.linkedin.com>), and Reddit (<http://www.reddit.com>). The package also includes dedicated functions for each social network platform and a function to resolve shortened URLs.
 License: GPL (>= 2)
-Packaged: 2016-03-20 23:08:49 UTC; toledo
+Packaged: 2016-12-13 17:18:38 UTC; toledo
 NeedsCompilation: no
 Repository: CRAN
-Date/Publication: 2016-03-21 00:34:41
+Date/Publication: 2016-12-13 19:52:57

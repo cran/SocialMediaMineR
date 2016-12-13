@@ -22,7 +22,7 @@ function(links, sleep.time=0) {
             api_scrapper <- function(x) try(RCurl::getURL(x, timeout = 240, ssl.verifypeer = FALSE)) }        
         
         # create call URLs
-        fbk.call <- paste0("https://api.facebook.com/method/links.getStats?urls=",link.now,"&format=json")
+        fbk.call <- paste0("http://graph.facebook.com/?fields=share&id=",link.now,"&format=json")
         rdd.call <- paste0("http://buttons.reddit.com/button_info.json?url=",link.now)
         lkn.call <- paste0("https://www.linkedin.com/countserv/count/share?url=",link.now,"&format=json")
         stu.call <- paste0("http://www.stumbleupon.com/services/1.01/badge.getinfo?url=",link.now)
@@ -47,10 +47,10 @@ function(links, sleep.time=0) {
             url=NA,
             normalized_url=NA,
             fbk_shares=NA,
-            fbk_likes=NA,
+            #fbk_likes=NA,
             fbk_comments=NA,
-            fbk_total=NA,
-            fbk_clicks=NA,
+            #fbk_total=NA,
+            #fbk_clicks=NA,
             rdt_score=NA,
             rdt_downs=NA,
             rdt_ups=NA,
@@ -67,13 +67,13 @@ function(links, sleep.time=0) {
         }
                 
         # aggregate results
-        if(is.data.frame(fbk.response)) { if(length(fbk.response$url)>0) { try(response$url<-as.character(fbk.response$url)) } }
-        if(is.data.frame(fbk.response)) { if(length(fbk.response$normalized_url)>0) { try(response$normalized_url<-as.character(fbk.response$normalized_url)) } }
-        if(is.data.frame(fbk.response)) { if(length(fbk.response$share_count)>0) { try(response$fbk_shares<-as.numeric(as.character(fbk.response$share_count))) } }
-        if(is.data.frame(fbk.response)) { if(length(fbk.response$like_count)>0) { try(response$fbk_likes<-as.numeric(as.character(fbk.response$like_count))) } }
-        if(is.data.frame(fbk.response)) { if(length(fbk.response$comment_count)>0) { try(response$fbk_comments<-as.numeric(as.character(fbk.response$comment_count))) } }
-        if(is.data.frame(fbk.response)) { if(length(fbk.response$total_count)>0) { try(response$fbk_total<-as.numeric(as.character(fbk.response$total_count))) } }
-        if(is.data.frame(fbk.response)) { if(length(fbk.response$click_count)>0) { try(response$fbk_clicks<-as.numeric(as.character(fbk.response$click_count))) } }
+        if(is.data.frame(fbk.response)) { if(length(fbk.response$id)>0) { try(response$id<-as.character(fbk.response$id)) } }
+        #if(is.data.frame(fbk.response)) { if(length(fbk.response$normalized_url)>0) { try(response$normalized_url<-as.character(fbk.response$normalized_url)) } }
+        if(is.data.frame(fbk.response)) { if(length(fbk.response$share_count)>0) { try(response$fbk_shares<-as.numeric(as.character(fbk.response$share.share_count))) } }
+        #if(is.data.frame(fbk.response)) { if(length(fbk.response$like_count)>0) { try(response$fbk_likes<-as.numeric(as.character(fbk.response$like_count))) } }
+        if(is.data.frame(fbk.response)) { if(length(fbk.response$comment_count)>0) { try(response$fbk_comments<-as.numeric(as.character(fbk.response$share.comment_count))) } }
+        #if(is.data.frame(fbk.response)) { if(length(fbk.response$total_count)>0) { try(response$fbk_total<-as.numeric(as.character(fbk.response$total_count))) } }
+        #if(is.data.frame(fbk.response)) { if(length(fbk.response$click_count)>0) { try(response$fbk_clicks<-as.numeric(as.character(fbk.response$click_count))) } }
         if(is.data.frame(rdd.response)) { if(length(rdd.response$score)>0) { try(response$rdt_score<-rdd.response$score) } }
         if(is.data.frame(rdd.response)) { if(length(rdd.response$downs)>0) { try(response$rdt_downs<-rdd.response$downs) } }
         if(is.data.frame(rdd.response)) { if(length(rdd.response$ups)>0) { try(response$rdt_ups<-rdd.response$ups) } }
@@ -84,6 +84,7 @@ function(links, sleep.time=0) {
             
         # collate results
         response.temp <- rbind(response.temp, response)
+        response.temp[is.na(response.temp)] <- 0
             }
     print(paste0("Query execution time: ", round(as.numeric(difftime(Sys.time(), start.time, units = "mins")), digits=2), " minutes"))
     return(response.temp)
